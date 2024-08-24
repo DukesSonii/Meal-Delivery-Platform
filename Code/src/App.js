@@ -17,7 +17,6 @@ import AppStore from "./utils/AppStore";
 import Cart from "./components/Cart";
 
 const Grocery = lazy(() => import("./components/Grocery"));
-const About = lazy(() => import("./components/About"));
 
 const AppLayout = () => {
   //now the usecontext username is default user if i want to updatate it everywhere in my app then use usecontext and in

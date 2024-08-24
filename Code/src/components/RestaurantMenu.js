@@ -67,6 +67,7 @@ import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import ShimmerMenu from "./ShimmerMenu";
 import RestaurantCategory from "./RestaurantCategory";
+import { Spin } from "antd";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
@@ -74,8 +75,18 @@ const RestaurantMenu = () => {
   const resInfo = useRestaurantMenu(resId);
 
   const [showIndex, setShowIndex] = useState(4);
-  if (!resInfo) return <ShimmerMenu />;
-
+  if (!resInfo)
+    return (
+      <div
+        style={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+        }}
+      >
+        <Spin size="large" />
+      </div>
+    );
   const { name, cuisines, costForTwoMessage } =
     resInfo.cards[2]?.card.card.info;
 

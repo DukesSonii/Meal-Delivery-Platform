@@ -7,26 +7,20 @@ const UpdateCartList = () => {
   const dispatch = useDispatch();
   const items = useSelector((state) => state.cartmod.items);
 
-  // Handle adding item
   const handleAddItem = (item) => {
     dispatch(addItem(item));
   };
 
-  // Handle removing item
   const handleRemoveItem = (item) => {
     dispatch(removeItem(item.card.info.id));
+    console.log(item.card.info.id);
   };
 
-  // Calculate total price
   const totalPrice = items.reduce(
     (total, item) =>
       total + (item.card.info.price ? item.card.info.price / 100 : 0),
     0
   );
-
-  // Debugging logs
-  console.log("Current items from Redux store:", items);
-  console.log("Total Price:", totalPrice);
 
   return (
     <div className="p-2 m-2 text-left justify-between">
